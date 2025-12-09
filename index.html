@@ -39,6 +39,320 @@
             overflow-x: hidden;
         }
 
+        /* Login Screen */
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .login-screen.hidden {
+            transform: translateY(-100%);
+        }
+
+        .login-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .login-logo .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .login-logo .logo-icon i {
+            font-size: 40px;
+            color: white;
+        }
+
+        .login-logo h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .login-logo p {
+            color: var(--gray);
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .login-form {
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-group input.error {
+            border-color: var(--danger);
+            background-color: rgba(245, 101, 101, 0.05);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-group .error-message {
+            color: var(--danger);
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-me input {
+            width: 18px;
+            height: 18px;
+        }
+
+        .forgot-password {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .btn-login:hover {
+            background: #E55A2B;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .btn-login.loading {
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+
+        .btn-login.loading .btn-text {
+            visibility: hidden;
+        }
+
+        .btn-login.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border: 3px solid transparent;
+            border-top-color: white;
+            border-radius: 50%;
+            animation: button-loading-spinner 1s ease infinite;
+        }
+
+        @keyframes button-loading-spinner {
+            from { transform: rotate(0turn); }
+            to { transform: rotate(1turn); }
+        }
+
+        .login-error {
+            background: rgba(245, 101, 101, 0.1);
+            border: 1px solid rgba(245, 101, 101, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            color: var(--danger);
+            font-size: 14px;
+            display: none;
+            text-align: center;
+        }
+
+        .login-error.show {
+            display: block;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .social-login {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--gray);
+            font-size: 14px;
+            position: relative;
+        }
+
+        .social-login::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #E2E8F0;
+            z-index: 1;
+        }
+
+        .social-login span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .social-btn.google i {
+            color: #DB4437;
+        }
+
+        .social-btn.facebook i {
+            color: #4267B2;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--gray);
+        }
+
+        .signup-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Demo Credentials */
+        .demo-credentials {
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 25px;
+            font-size: 14px;
+        }
+
+        .demo-credentials h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .demo-credentials p {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .demo-credentials code {
+            background: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-family: monospace;
+            color: var(--primary);
+        }
+
+        /* Main App (hidden by default) */
+        .main-app {
+            display: none;
+        }
+
+        .main-app.active {
+            display: block;
+        }
+
         /* Header */
         .header {
             background: white;
@@ -912,443 +1226,514 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="logo">
-            <i class="fas fa-compass"></i>
-            <span>LocalPal</span>
-        </div>
-        <div class="header-actions">
-            <i class="far fa-bell">
-                <span class="notification-badge">3</span>
-            </i>
-            <i class="far fa-comments">
-                <span class="notification-badge">1</span>
-            </i>
-        </div>
-    </div>
-
-    <!-- Home Screen -->
-    <div id="home-screen" class="screen active">
-        <!-- Stories -->
-        <div class="stories">
-            <div class="story">
-                <div class="story-avatar">
-                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User">
-                </div>
-                <div class="story-name">Tu historia</div>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-logo">
+            <div class="logo-icon">
+                <i class="fas fa-compass"></i>
             </div>
-            <div class="story">
-                <div class="story-avatar">
-                    <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="User">
-                </div>
-                <div class="story-name">Carlos</div>
-            </div>
-            <div class="story">
-                <div class="story-avatar">
-                    <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="User">
-                </div>
-                <div class="story-name">Ana</div>
-            </div>
-            <div class="story">
-                <div class="story-avatar">
-                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="User">
-                </div>
-                <div class="story-name">Miguel</div>
-            </div>
-            <div class="story">
-                <div class="story-avatar">
-                    <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Event">
-                </div>
-                <div class="story-name">Tour Gourmet</div>
-            </div>
+            <h1>LocalPal</h1>
+            <p>Experiencias locales, conexiones globales</p>
         </div>
 
-        <!-- Feed -->
-        <div class="feed">
-            <!-- Post 1 -->
-            <div class="post-card">
-                <div class="post-header">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="post-avatar">
-                    <div class="post-user-info">
-                        <h3>María García</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Plaza Mayor, Madrid • <span class="badge badge-local">Guía Local</span></p>
-                    </div>
+        <div class="login-form">
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" placeholder="tu@email.com">
+                <div class="error-message" id="email-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" placeholder="••••••••">
+                <div class="error-message" id="password-error"></div>
+            </div>
+
+            <div class="login-options">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Recordarme</label>
                 </div>
-                <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post" class="post-image">
-                <div class="post-actions">
-                    <div class="post-actions-left">
-                        <button class="action-btn like-btn" data-post="1">
-                            <i class="far fa-heart"></i>
-                        </button>
-                        <button class="action-btn" onclick="openModal('comment-modal')">
-                            <i class="far fa-comment"></i>
-                        </button>
-                        <button class="action-btn">
-                            <i class="far fa-paper-plane"></i>
-                        </button>
-                    </div>
-                    <button class="action-btn">
-                        <i class="far fa-bookmark"></i>
+                <a href="#" class="forgot-password" onclick="showForgotPassword()">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <button class="btn-login" onclick="login()">
+                <span class="btn-text">Iniciar sesión</span>
+            </button>
+
+            <div class="login-error" id="login-error">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="login-error-text">Credenciales incorrectas</span>
+            </div>
+
+            <div class="social-login">
+                <span>O continúa con</span>
+                <div class="social-buttons">
+                    <button class="social-btn google" onclick="socialLogin('google')">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button class="social-btn facebook" onclick="socialLogin('facebook')">
+                        <i class="fab fa-facebook"></i> Facebook
                     </button>
                 </div>
-                <div class="post-info">
-                    <div class="post-likes"><span id="like-count-1">42</span> likes</div>
-                    <div class="post-caption"><strong>maria_garcia</strong> ¡Increíble experiencia de tapas por el barrio de La Latina! Únete a mi próximo tour gastronómico este sábado. #Madrid #Tapas #GuíaLocal</div>
-                    <div class="post-time">Hace 2 horas</div>
+            </div>
+
+            <div class="signup-link">
+                ¿No tienes cuenta? <a href="#" onclick="showSignup()">Regístrate aquí</a>
+            </div>
+
+            <div class="demo-credentials">
+                <h4>👨‍💻 Demo para inversores</h4>
+                <p><strong>ÚNICAS credenciales válidas:</strong></p>
+                <p>Email: <code>demo@localpal.com</code></p>
+                <p>Contraseña: <code>demo123</code></p>
+                <p style="font-size: 12px; color: var(--gray); margin-top: 8px;">
+                    <i class="fas fa-exclamation-triangle"></i> Cualquier otra combinación será rechazada
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App (hidden initially) -->
+    <div id="main-app" class="main-app">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-compass"></i>
+                <span>LocalPal</span>
+            </div>
+            <div class="header-actions">
+                <i class="far fa-bell">
+                    <span class="notification-badge">3</span>
+                </i>
+                <i class="far fa-comments">
+                    <span class="notification-badge">1</span>
+                </i>
+            </div>
+        </div>
+
+        <!-- Home Screen -->
+        <div id="home-screen" class="screen active">
+            <!-- Stories -->
+            <div class="stories">
+                <div class="story">
+                    <div class="story-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User">
+                    </div>
+                    <div class="story-name">Tu historia</div>
+                </div>
+                <div class="story">
+                    <div class="story-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="User">
+                    </div>
+                    <div class="story-name">Carlos</div>
+                </div>
+                <div class="story">
+                    <div class="story-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="User">
+                    </div>
+                    <div class="story-name">Ana</div>
+                </div>
+                <div class="story">
+                    <div class="story-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="User">
+                    </div>
+                    <div class="story-name">Miguel</div>
+                </div>
+                <div class="story">
+                    <div class="story-avatar">
+                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Event">
+                    </div>
+                    <div class="story-name">Tour Gourmet</div>
                 </div>
             </div>
 
-            <!-- Post 2 -->
-            <div class="post-card">
-                <div class="post-header">
-                    <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="User" class="post-avatar">
-                    <div class="post-user-info">
-                        <h3>Pablo Rodríguez</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Barrio Gótico, Barcelona • <span class="badge badge-local">Guía Local</span></p>
+            <!-- Feed -->
+            <div class="feed">
+                <!-- Post 1 -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="post-avatar">
+                        <div class="post-user-info">
+                            <h3>María García</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> Plaza Mayor, Madrid • <span class="badge badge-local">Guía Local</span></p>
+                        </div>
                     </div>
-                </div>
-                <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post" class="post-image">
-                <div class="post-actions">
-                    <div class="post-actions-left">
-                        <button class="action-btn like-btn" data-post="2">
-                            <i class="far fa-heart"></i>
-                        </button>
-                        <button class="action-btn" onclick="openModal('comment-modal')">
-                            <i class="far fa-comment"></i>
-                        </button>
+                    <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post" class="post-image">
+                    <div class="post-actions">
+                        <div class="post-actions-left">
+                            <button class="action-btn like-btn" data-post="1">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn" onclick="openModal('comment-modal')">
+                                <i class="far fa-comment"></i>
+                            </button>
+                            <button class="action-btn">
+                                <i class="far fa-paper-plane"></i>
+                            </button>
+                        </div>
                         <button class="action-btn">
-                            <i class="far fa-paper-plane"></i>
+                            <i class="far fa-bookmark"></i>
                         </button>
                     </div>
-                    <button class="action-btn">
-                        <i class="far fa-bookmark"></i>
-                    </button>
+                    <div class="post-info">
+                        <div class="post-likes"><span id="like-count-1">42</span> likes</div>
+                        <div class="post-caption"><strong>maria_garcia</strong> ¡Increíble experiencia de tapas por el barrio de La Latina! Únete a mi próximo tour gastronómico este sábado. #Madrid #Tapas #GuíaLocal</div>
+                        <div class="post-time">Hace 2 horas</div>
+                    </div>
                 </div>
-                <div class="post-info">
-                    <div class="post-likes"><span id="like-count-2">28</span> likes</div>
-                    <div class="post-caption"><strong>pablo_rodriguez</strong> Descubriendo los secretos del Barrio Gótico de Barcelona. ¿Te apuntas a mi ruta de historia y arquitectura? ¡Plazas limitadas! #Barcelona #Historia #Arquitectura</div>
-                    <div class="post-time">Hace 5 horas</div>
-                </div>
-            </div>
 
-            <!-- Post 3 (Event) -->
-            <div class="post-card">
-                <div class="post-header">
-                    <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="User" class="post-avatar">
-                    <div class="post-user-info">
-                        <h3>Laura Martínez</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Retiro, Madrid • <span class="badge badge-new">Nuevo Evento</span></p>
+                <!-- Post 2 -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="User" class="post-avatar">
+                        <div class="post-user-info">
+                            <h3>Pablo Rodríguez</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> Barrio Gótico, Barcelona • <span class="badge badge-local">Guía Local</span></p>
+                        </div>
                     </div>
-                </div>
-                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post" class="post-image">
-                <div class="post-actions">
-                    <div class="post-actions-left">
-                        <button class="action-btn like-btn" data-post="3">
-                            <i class="far fa-heart"></i>
-                        </button>
-                        <button class="action-btn" onclick="openModal('comment-modal')">
-                            <i class="far fa-comment"></i>
-                        </button>
+                    <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post" class="post-image">
+                    <div class="post-actions">
+                        <div class="post-actions-left">
+                            <button class="action-btn like-btn" data-post="2">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn" onclick="openModal('comment-modal')">
+                                <i class="far fa-comment"></i>
+                            </button>
+                            <button class="action-btn">
+                                <i class="far fa-paper-plane"></i>
+                            </button>
+                        </div>
                         <button class="action-btn">
-                            <i class="far fa-paper-plane"></i>
+                            <i class="far fa-bookmark"></i>
                         </button>
                     </div>
-                    <button class="action-btn">
-                        <i class="far fa-bookmark"></i>
-                    </button>
+                    <div class="post-info">
+                        <div class="post-likes"><span id="like-count-2">28</span> likes</div>
+                        <div class="post-caption"><strong>pablo_rodriguez</strong> Descubriendo los secretos del Barrio Gótico de Barcelona. ¿Te apuntas a mi ruta de historia y arquitectura? ¡Plazas limitadas! #Barcelona #Historia #Arquitectura</div>
+                        <div class="post-time">Hace 5 horas</div>
+                    </div>
                 </div>
-                <div class="post-info">
-                    <div class="post-likes"><span id="like-count-3">67</span> likes</div>
-                    <div class="post-caption"><strong>laura_martinez</strong> 🎨 Taller de pintura al aire libre en el Parque del Retiro. Todos los materiales incluidos. ¡Perfecto para principiantes! Reserva tu plaza en el evento.</div>
-                    <div class="post-time">Hace 1 día</div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Discover Screen -->
-    <div id="discover-screen" class="screen">
-        <div class="search-bar">
-            <div class="search-container">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Buscar experiencias, eventos, guías...">
-                <i class="fas fa-sliders-h" style="cursor: pointer;" onclick="openModal('filter-modal')"></i>
-            </div>
-        </div>
-
-        <div class="categories">
-            <div class="category active">Todos</div>
-            <div class="category">🍴 Gastronomía</div>
-            <div class="category">🎨 Cultura</div>
-            <div class="category">🏞️ Naturaleza</div>
-            <div class="category">🎵 Música</div>
-            <div class="category">🏛️ Historia</div>
-            <div class="category">🎭 Entretenimiento</div>
-        </div>
-
-        <div class="events-grid">
-            <!-- Event 1 -->
-            <div class="event-card" onclick="openModal('event-modal')">
-                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event" class="event-image">
-                <div class="event-info">
-                    <div class="event-category">
-                        <span>🍴 Gastronomía</span>
-                        <span class="event-rating"><i class="fas fa-star"></i> 4.8</span>
+                <!-- Post 3 (Event) -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="User" class="post-avatar">
+                        <div class="post-user-info">
+                            <h3>Laura Martínez</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> Retiro, Madrid • <span class="badge badge-new">Nuevo Evento</span></p>
+                        </div>
                     </div>
-                    <div class="event-title">Tour de Tapas por La Latina</div>
-                    <div class="event-meta">
-                        <div><i class="far fa-calendar"></i> Sáb, 15 Jun</div>
-                        <div><i class="fas fa-users"></i> 8/12 plazas</div>
-                        <div><i class="fas fa-map-marker-alt"></i> 1.2 km</div>
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Post" class="post-image">
+                    <div class="post-actions">
+                        <div class="post-actions-left">
+                            <button class="action-btn like-btn" data-post="3">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn" onclick="openModal('comment-modal')">
+                                <i class="far fa-comment"></i>
+                            </button>
+                            <button class="action-btn">
+                                <i class="far fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <button class="action-btn">
+                            <i class="far fa-bookmark"></i>
+                        </button>
                     </div>
-                    <div class="event-price">€35/persona</div>
-                </div>
-            </div>
-
-            <!-- Event 2 -->
-            <div class="event-card" onclick="openModal('event-modal')">
-                <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event" class="event-image">
-                <div class="event-info">
-                    <div class="event-category">
-                        <span>🏛️ Historia</span>
-                        <span class="event-rating"><i class="fas fa-star"></i> 4.9</span>
-                    </div>
-                    <div class="event-title">Ruta por el Madrid de los Austrias</div>
-                    <div class="event-meta">
-                        <div><i class="far fa-calendar"></i> Dom, 16 Jun</div>
-                        <div><i class="fas fa-users"></i> 15/20 plazas</div>
-                        <div><i class="fas fa-map-marker-alt"></i> 0.8 km</div>
-                    </div>
-                    <div class="event-price">€25/persona</div>
-                </div>
-            </div>
-
-            <!-- Event 3 -->
-            <div class="event-card" onclick="openModal('event-modal')">
-                <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event" class="event-image">
-                <div class="event-info">
-                    <div class="event-category">
-                        <span>🎭 Entretenimiento</span>
-                        <span class="badge badge-popular">🔥 Popular</span>
-                    </div>
-                    <div class="event-title">Noche de Flamenco en Tablao</div>
-                    <div class="event-meta">
-                        <div><i class="far fa-calendar"></i> Vie, 14 Jun</div>
-                        <div><i class="fas fa-users"></i> 5/15 plazas</div>
-                        <div><i class="fas fa-map-marker-alt"></i> 2.1 km</div>
-                    </div>
-                    <div class="event-price">€45/persona</div>
-                </div>
-            </div>
-
-            <!-- Event 4 -->
-            <div class="event-card" onclick="openModal('event-modal')">
-                <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event" class="event-image">
-                <div class="event-info">
-                    <div class="event-category">
-                        <span>🎨 Cultura</span>
-                        <span class="event-rating"><i class="fas fa-star"></i> 4.7</span>
-                    </div>
-                    <div class="event-title">Visita Guiada al Museo del Prado</div>
-                    <div class="event-meta">
-                        <div><i class="far fa-calendar"></i> Sáb, 15 Jun</div>
-                        <div><i class="fas fa-users"></i> 12/15 plazas</div>
-                        <div><i class="fas fa-map-marker-alt"></i> 3.0 km</div>
-                    </div>
-                    <div class="event-price">€30/persona</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Create Screen -->
-    <div id="create-screen" class="screen">
-        <div class="create-container">
-            <h2 class="text-center mb-20">Crear nueva publicación</h2>
-            <div class="create-options">
-                <div class="create-option" onclick="openModal('create-post-modal')">
-                    <i class="fas fa-camera"></i>
-                    <h3>Publicación</h3>
-                    <p>Comparte fotos o videos con la comunidad</p>
-                </div>
-                <div class="create-option" onclick="openModal('create-event-modal')">
-                    <i class="fas fa-calendar-plus"></i>
-                    <h3>Evento</h3>
-                    <p>Organiza una actividad o experiencia</p>
-                </div>
-            </div>
-
-            <div class="recent-drafts mt-20">
-                <h3>Borradores recientes</h3>
-                <div class="draft-item">
-                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Draft" class="draft-preview">
-                    <div class="draft-info">
-                        <h4>Cena de degustación vegana</h4>
-                        <p>Guardado hace 2 días</p>
-                    </div>
-                </div>
-                <div class="draft-item">
-                    <img src="https://images.unsplash.com/photo-1519677100203-4f3c1f0f8c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Draft" class="draft-preview">
-                    <div class="draft-info">
-                        <h4>Tour street art en Malasaña</h4>
-                        <p>Guardado hace 1 semana</p>
+                    <div class="post-info">
+                        <div class="post-likes"><span id="like-count-3">67</span> likes</div>
+                        <div class="post-caption"><strong>laura_martinez</strong> 🎨 Taller de pintura al aire libre en el Parque del Retiro. Todos los materiales incluidos. ¡Perfecto para principiantes! Reserva tu plaza en el evento.</div>
+                        <div class="post-time">Hace 1 día</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Events Screen -->
-    <div id="events-screen" class="screen">
-        <div class="events-tabs">
-            <div class="event-tab active" onclick="switchEventTab('upcoming')">Próximos</div>
-            <div class="event-tab" onclick="switchEventTab('nearby')">Cercanos</div>
-            <div class="event-tab" onclick="switchEventTab('confirmed')">Confirmados</div>
-            <div class="event-tab" onclick="switchEventTab('hosting')">Organizando</div>
-        </div>
-
-        <div class="events-list">
-            <!-- Event 1 -->
-            <div class="upcoming-event" onclick="openModal('event-detail-modal')">
-                <div class="event-date">
-                    <div class="day">15</div>
-                    <div class="month">JUN</div>
-                </div>
-                <div class="event-content">
-                    <h3>Tour de Tapas por La Latina</h3>
-                    <p><i class="far fa-clock"></i> 20:00 - 23:00</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Plaza de la Cebada, Madrid</p>
-                    <div class="event-participants">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Participant" class="participant-avatar">
-                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Participant" class="participant-avatar">
-                        <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Participant" class="participant-avatar">
-                        <div class="participant-count">+5 asistentes</div>
-                    </div>
+        <!-- Discover Screen -->
+        <div id="discover-screen" class="screen">
+            <div class="search-bar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar experiencias, eventos, guías...">
+                    <i class="fas fa-sliders-h" style="cursor: pointer;" onclick="openModal('filter-modal')"></i>
                 </div>
             </div>
 
-            <!-- Event 2 -->
-            <div class="upcoming-event" onclick="openModal('event-detail-modal')">
-                <div class="event-date">
-                    <div class="day">16</div>
-                    <div class="month">JUN</div>
-                </div>
-                <div class="event-content">
-                    <h3>Ruta por el Madrid de los Austrias</h3>
-                    <p><i class="far fa-clock"></i> 11:00 - 14:00</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Plaza Mayor, Madrid</p>
-                    <div class="event-participants">
-                        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Participant" class="participant-avatar">
-                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Participant" class="participant-avatar">
-                        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Participant" class="participant-avatar">
-                        <div class="participant-count">+12 asistentes</div>
-                    </div>
-                </div>
+            <div class="categories">
+                <div class="category active">Todos</div>
+                <div class="category">🍴 Gastronomía</div>
+                <div class="category">🎨 Cultura</div>
+                <div class="category">🏞️ Naturaleza</div>
+                <div class="category">🎵 Música</div>
+                <div class="category">🏛️ Historia</div>
+                <div class="category">🎭 Entretenimiento</div>
             </div>
 
-            <!-- Event 3 -->
-            <div class="upcoming-event" onclick="openModal('event-detail-modal')">
-                <div class="event-date">
-                    <div class="day">14</div>
-                    <div class="month">JUN</div>
-                </div>
-                <div class="event-content">
-                    <h3>Noche de Flamenco en Tablao</h3>
-                    <p><i class="far fa-clock"></i> 22:00 - 01:00</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Calle de las Huertas, Madrid</p>
-                    <div class="event-participants">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Participant" class="participant-avatar">
-                        <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Participant" class="participant-avatar">
-                        <div class="participant-count">+3 asistentes</div>
+            <div class="events-grid">
+                <!-- Event 1 -->
+                <div class="event-card" onclick="openModal('event-modal')">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event" class="event-image">
+                    <div class="event-info">
+                        <div class="event-category">
+                            <span>🍴 Gastronomía</span>
+                            <span class="event-rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                        <div class="event-title">Tour de Tapas por La Latina</div>
+                        <div class="event-meta">
+                            <div><i class="far fa-calendar"></i> Sáb, 15 Jun</div>
+                            <div><i class="fas fa-users"></i> 8/12 plazas</div>
+                            <div><i class="fas fa-map-marker-alt"></i> 1.2 km</div>
+                        </div>
+                        <div class="event-price">€35/persona</div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Profile Screen -->
-    <div id="profile-screen" class="screen">
-        <div class="profile-header">
-            <div class="profile-banner"></div>
-            <div class="profile-info">
-                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User" class="profile-avatar">
-                <div class="profile-name">Alejandro Pérez</div>
-                <div class="profile-bio">Guía local en Madrid • Amante de la gastronomía y la historia • Organizando experiencias únicas desde 2020</div>
-                <div class="profile-stats">
-                    <div class="stat">
-                        <div class="stat-value">247</div>
-                        <div class="stat-label">Seguidores</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">156</div>
-                        <div class="stat-label">Siguiendo</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">42</div>
-                        <div class="stat-label">Eventos</div>
+                <!-- Event 2 -->
+                <div class="event-card" onclick="openModal('event-modal')">
+                    <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event" class="event-image">
+                    <div class="event-info">
+                        <div class="event-category">
+                            <span>🏛️ Historia</span>
+                            <span class="event-rating"><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                        <div class="event-title">Ruta por el Madrid de los Austrias</div>
+                        <div class="event-meta">
+                            <div><i class="far fa-calendar"></i> Dom, 16 Jun</div>
+                            <div><i class="fas fa-users"></i> 15/20 plazas</div>
+                            <div><i class="fas fa-map-marker-alt"></i> 0.8 km</div>
+                        </div>
+                        <div class="event-price">€25/persona</div>
                     </div>
                 </div>
-                <div class="profile-actions">
-                    <button class="btn btn-outline">Editar perfil</button>
-                    <button class="btn btn-primary">Compartir perfil</button>
+
+                <!-- Event 3 -->
+                <div class="event-card" onclick="openModal('event-modal')">
+                    <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event" class="event-image">
+                    <div class="event-info">
+                        <div class="event-category">
+                            <span>🎭 Entretenimiento</span>
+                            <span class="badge badge-popular">🔥 Popular</span>
+                        </div>
+                        <div class="event-title">Noche de Flamenco en Tablao</div>
+                        <div class="event-meta">
+                            <div><i class="far fa-calendar"></i> Vie, 14 Jun</div>
+                            <div><i class="fas fa-users"></i> 5/15 plazas</div>
+                            <div><i class="fas fa-map-marker-alt"></i> 2.1 km</div>
+                        </div>
+                        <div class="event-price">€45/persona</div>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="event-card" onclick="openModal('event-modal')">
+                    <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event" class="event-image">
+                    <div class="event-info">
+                        <div class="event-category">
+                            <span>🎨 Cultura</span>
+                            <span class="event-rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                        <div class="event-title">Visita Guiada al Museo del Prado</div>
+                        <div class="event-meta">
+                            <div><i class="far fa-calendar"></i> Sáb, 15 Jun</div>
+                            <div><i class="fas fa-users"></i> 12/15 plazas</div>
+                            <div><i class="fas fa-map-marker-alt"></i> 3.0 km</div>
+                        </div>
+                        <div class="event-price">€30/persona</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="profile-tabs">
-            <div class="profile-tab active" onclick="switchProfileTab('posts')">Publicaciones</div>
-            <div class="profile-tab" onclick="switchProfileTab('events')">Eventos</div>
-            <div class="profile-tab" onclick="switchProfileTab('saved')">Guardados</div>
-            <div class="profile-tab" onclick="switchProfileTab('achievements')">Logros</div>
-        </div>
+        <!-- Create Screen -->
+        <div id="create-screen" class="screen">
+            <div class="create-container">
+                <h2 class="text-center mb-20">Crear nueva publicación</h2>
+                <div class="create-options">
+                    <div class="create-option" onclick="openModal('create-post-modal')">
+                        <i class="fas fa-camera"></i>
+                        <h3>Publicación</h3>
+                        <p>Comparte fotos o videos con la comunidad</p>
+                    </div>
+                    <div class="create-option" onclick="openModal('create-event-modal')">
+                        <i class="fas fa-calendar-plus"></i>
+                        <h3>Evento</h3>
+                        <p>Organiza una actividad o experiencia</p>
+                    </div>
+                </div>
 
-        <div class="profile-content">
-            <div id="profile-posts" class="profile-tab-content">
-                <div class="profile-grid">
-                    <div class="profile-post">
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
+                <div class="recent-drafts mt-20">
+                    <h3>Borradores recientes</h3>
+                    <div class="draft-item">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Draft" class="draft-preview">
+                        <div class="draft-info">
+                            <h4>Cena de degustación vegana</h4>
+                            <p>Guardado hace 2 días</p>
+                        </div>
                     </div>
-                    <div class="profile-post">
-                        <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
-                    </div>
-                    <div class="profile-post">
-                        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
-                    </div>
-                    <div class="profile-post">
-                        <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
-                    </div>
-                    <div class="profile-post">
-                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
-                    </div>
-                    <div class="profile-post">
-                        <img src="https://images.unsplash.com/photo-1519677100203-4f3c1f0f8c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
+                    <div class="draft-item">
+                        <img src="https://images.unsplash.com/photo-1519677100203-4f3c1f0f8c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Draft" class="draft-preview">
+                        <div class="draft-info">
+                            <h4>Tour street art en Malasaña</h4>
+                            <p>Guardado hace 1 semana</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bottom Navigation -->
-    <div class="bottom-nav">
-        <div class="nav-item active" onclick="switchScreen('home-screen')">
-            <i class="fas fa-home"></i>
-            <span>Inicio</span>
+        <!-- Events Screen -->
+        <div id="events-screen" class="screen">
+            <div class="events-tabs">
+                <div class="event-tab active" onclick="switchEventTab('upcoming')">Próximos</div>
+                <div class="event-tab" onclick="switchEventTab('nearby')">Cercanos</div>
+                <div class="event-tab" onclick="switchEventTab('confirmed')">Confirmados</div>
+                <div class="event-tab" onclick="switchEventTab('hosting')">Organizando</div>
+            </div>
+
+            <div class="events-list">
+                <!-- Event 1 -->
+                <div class="upcoming-event" onclick="openModal('event-detail-modal')">
+                    <div class="event-date">
+                        <div class="day">15</div>
+                        <div class="month">JUN</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Tour de Tapas por La Latina</h3>
+                        <p><i class="far fa-clock"></i> 20:00 - 23:00</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Plaza de la Cebada, Madrid</p>
+                        <div class="event-participants">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Participant" class="participant-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Participant" class="participant-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Participant" class="participant-avatar">
+                            <div class="participant-count">+5 asistentes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="upcoming-event" onclick="openModal('event-detail-modal')">
+                    <div class="event-date">
+                        <div class="day">16</div>
+                        <div class="month">JUN</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Ruta por el Madrid de los Austrias</h3>
+                        <p><i class="far fa-clock"></i> 11:00 - 14:00</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Plaza Mayor, Madrid</p>
+                        <div class="event-participants">
+                            <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Participant" class="participant-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Participant" class="participant-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Participant" class="participant-avatar">
+                            <div class="participant-count">+12 asistentes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="upcoming-event" onclick="openModal('event-detail-modal')">
+                    <div class="event-date">
+                        <div class="day">14</div>
+                        <div class="month">JUN</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Noche de Flamenco en Tablao</h3>
+                        <p><i class="far fa-clock"></i> 22:00 - 01:00</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Calle de las Huertas, Madrid</p>
+                        <div class="event-participants">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Participant" class="participant-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Participant" class="participant-avatar">
+                            <div class="participant-count">+3 asistentes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="nav-item" onclick="switchScreen('discover-screen')">
-            <i class="fas fa-compass"></i>
-            <span>Descubrir</span>
+
+        <!-- Profile Screen -->
+        <div id="profile-screen" class="screen">
+            <div class="profile-header">
+                <div class="profile-banner"></div>
+                <div class="profile-info">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User" class="profile-avatar">
+                    <div class="profile-name">Alejandro Pérez</div>
+                    <div class="profile-bio">Guía local en Madrid • Amante de la gastronomía y la historia • Organizando experiencias únicas desde 2020</div>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-value">247</div>
+                            <div class="stat-label">Seguidores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">156</div>
+                            <div class="stat-label">Siguiendo</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">42</div>
+                            <div class="stat-label">Eventos</div>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn btn-outline">Editar perfil</button>
+                        <button class="btn btn-primary">Compartir perfil</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-tabs">
+                <div class="profile-tab active" onclick="switchProfileTab('posts')">Publicaciones</div>
+                <div class="profile-tab" onclick="switchProfileTab('events')">Eventos</div>
+                <div class="profile-tab" onclick="switchProfileTab('saved')">Guardados</div>
+                <div class="profile-tab" onclick="switchProfileTab('achievements')">Logros</div>
+            </div>
+
+            <div class="profile-content">
+                <div id="profile-posts" class="profile-tab-content">
+                    <div class="profile-grid">
+                        <div class="profile-post">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
+                        </div>
+                        <div class="profile-post">
+                            <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
+                        </div>
+                        <div class="profile-post">
+                            <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
+                        </div>
+                        <div class="profile-post">
+                            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
+                        </div>
+                        <div class="profile-post">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
+                        </div>
+                        <div class="profile-post">
+                            <img src="https://images.unsplash.com/photo-1519677100203-4f3c1f0f8c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Post">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="create-button" onclick="switchScreen('create-screen')">
-            <i class="fas fa-plus"></i>
-        </div>
-        <div class="nav-item" onclick="switchScreen('events-screen')">
-            <i class="fas fa-calendar-alt"></i>
-            <span>Eventos</span>
-        </div>
-        <div class="nav-item" onclick="switchScreen('profile-screen')">
-            <i class="fas fa-user"></i>
-            <span>Perfil</span>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item active" onclick="switchScreen('home-screen')">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </div>
+            <div class="nav-item" onclick="switchScreen('discover-screen')">
+                <i class="fas fa-compass"></i>
+                <span>Descubrir</span>
+            </div>
+            <div class="create-button" onclick="switchScreen('create-screen')">
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="nav-item" onclick="switchScreen('events-screen')">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Eventos</span>
+            </div>
+            <div class="nav-item" onclick="switchScreen('profile-screen')">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </div>
         </div>
     </div>
 
@@ -1580,23 +1965,302 @@
         </div>
     </div>
 
+    <!-- Logout Modal -->
+    <div id="logout-modal" class="modal">
+        <div class="modal-content" style="max-width: 350px;">
+            <div class="modal-body" style="text-align: center; padding: 40px 30px;">
+                <div style="background: rgba(245, 101, 101, 0.1); color: var(--danger); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
+                    <i class="fas fa-sign-out-alt" style="font-size: 30px;"></i>
+                </div>
+                <h2 style="margin-bottom: 15px;">¿Cerrar sesión?</h2>
+                <p style="color: var(--gray); margin-bottom: 25px; line-height: 1.5;">¿Estás seguro de que quieres cerrar sesión en LocalPal?</p>
+                <div style="display: flex; gap: 15px;">
+                    <button class="btn btn-outline" onclick="closeModal()" style="flex: 1;">Cancelar</button>
+                    <button class="btn btn-primary" onclick="logout()" style="flex: 1; background: var(--danger);">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgot-password-modal" class="modal">
+        <div class="modal-content" style="max-width: 350px;">
+            <div class="modal-header">
+                <h2>Recuperar contraseña</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 20px; color: var(--gray);">Introduce tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
+                <div class="form-group">
+                    <label for="recovery-email">Correo electrónico</label>
+                    <input type="email" id="recovery-email" placeholder="tu@email.com">
+                </div>
+                <button class="btn btn-primary w-100" onclick="sendRecoveryEmail()">Enviar enlace de recuperación</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Navigation Functions
+        // ============================================
+        // CONFIGURACIÓN DE CREDENCIALES VÁLIDAS
+        // ============================================
+        const VALID_CREDENTIALS = [
+            {
+                email: "demo@localpal.com",
+                password: "demo123",
+                name: "Demo User"
+            },
+            {
+                email: "inversor@localpal.com",
+                password: "invertir2024",
+                name: "Inversor"
+            },
+            {
+                email: "guia@localpal.com",
+                password: "guia123",
+                name: "Guía Local"
+            }
+        ];
+
+        // ============================================
+        // FUNCIONES DE LOGIN CON VALIDACIÓN ESTRICTA
+        // ============================================
+        function login() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const loginBtn = document.querySelector('.btn-login');
+            const loginError = document.getElementById('login-error');
+            const emailError = document.getElementById('email-error');
+            const passwordError = document.getElementById('password-error');
+            
+            // Reset errores
+            loginError.classList.remove('show');
+            emailError.style.display = 'none';
+            passwordError.style.display = 'none';
+            document.getElementById('email').classList.remove('error');
+            document.getElementById('password').classList.remove('error');
+            
+            // Validaciones básicas
+            if (!email) {
+                document.getElementById('email').classList.add('error');
+                emailError.textContent = 'El correo electrónico es obligatorio';
+                emailError.style.display = 'block';
+                return;
+            }
+            
+            if (!password) {
+                document.getElementById('password').classList.add('error');
+                passwordError.textContent = 'La contraseña es obligatoria';
+                passwordError.style.display = 'block';
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                document.getElementById('email').classList.add('error');
+                emailError.textContent = 'Formato de email inválido';
+                emailError.style.display = 'block';
+                return;
+            }
+            
+            // Mostrar loading
+            loginBtn.classList.add('loading');
+            
+            // Simular petición al servidor
+            setTimeout(() => {
+                // Verificar credenciales
+                const isValid = validateCredentials(email, password);
+                
+                if (isValid) {
+                    // Credenciales correctas
+                    loginSuccess(email);
+                } else {
+                    // Credenciales incorrectas
+                    loginFailed();
+                }
+                
+                // Quitar loading
+                loginBtn.classList.remove('loading');
+            }, 1500);
+        }
+        
+        function validateCredentials(email, password) {
+            // Buscar credenciales válidas
+            return VALID_CREDENTIALS.some(cred => 
+                cred.email.toLowerCase() === email.toLowerCase() && 
+                cred.password === password
+            );
+        }
+        
+        function getUserName(email) {
+            const user = VALID_CREDENTIALS.find(cred => 
+                cred.email.toLowerCase() === email.toLowerCase()
+            );
+            return user ? user.name : email.split('@')[0];
+        }
+        
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        function loginSuccess(email) {
+            // Ocultar login screen con animación
+            document.getElementById('login-screen').classList.add('hidden');
+            
+            // Mostrar main app después de un delay
+            setTimeout(() => {
+                document.getElementById('main-app').classList.add('active');
+                document.getElementById('login-screen').style.display = 'none';
+                
+                // Mostrar mensaje de bienvenida
+                const userName = getUserName(email);
+                showNotification(`¡Bienvenido a LocalPal, ${userName}!`);
+                
+                // Si es usuario demo, mostrar mensaje especial
+                if (email === 'demo@localpal.com') {
+                    setTimeout(() => {
+                        showNotification('🔐 Usando credenciales demo. Prueba también: inversor@localpal.com / invertir2024');
+                    }, 2000);
+                }
+            }, 500);
+        }
+        
+        function loginFailed() {
+            // Mostrar error
+            const loginError = document.getElementById('login-error');
+            const loginErrorText = document.getElementById('login-error-text');
+            
+            // Cambiar mensaje aleatorio
+            const errorMessages = [
+                'Credenciales incorrectas',
+                'Email o contraseña inválidos',
+                'Acceso denegado',
+                'Verifica tus credenciales'
+            ];
+            
+            const randomError = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+            loginErrorText.textContent = randomError;
+            
+            // Animación de error
+            loginError.classList.add('show');
+            document.getElementById('email').classList.add('error');
+            document.getElementById('password').classList.add('error');
+            
+            // Agitar botón
+            const loginBtn = document.querySelector('.btn-login');
+            loginBtn.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+                loginBtn.style.animation = '';
+            }, 500);
+            
+            // Limpiar contraseña
+            document.getElementById('password').value = '';
+            
+            // Enfocar campo de email
+            document.getElementById('email').focus();
+        }
+        
+        // ============================================
+        // FUNCIONES SOCIAL LOGIN (SIMULADAS)
+        // ============================================
+        function socialLogin(provider) {
+            // Para la demo, usar credenciales demo
+            document.getElementById('email').value = 'demo@localpal.com';
+            document.getElementById('password').value = 'demo123';
+            
+            showNotification(`Iniciando sesión con ${provider}...`);
+            
+            // Auto-login después de un delay
+            setTimeout(() => {
+                login();
+            }, 1000);
+        }
+        
+        // ============================================
+        // FUNCIONES AUXILIARES LOGIN
+        // ============================================
+        function showSignup() {
+            alert('Para esta demo, usa las credenciales:\n\n' +
+                  '📧 demo@localpal.com\n🔐 demo123\n\n' +
+                  'O también puedes usar:\n' +
+                  '📧 inversor@localpal.com\n🔐 invertir2024\n\n' +
+                  '📧 guia@localpal.com\n🔐 guia123');
+        }
+        
+        function showForgotPassword() {
+            openModal('forgot-password-modal');
+        }
+        
+        function sendRecoveryEmail() {
+            const email = document.getElementById('recovery-email').value;
+            
+            if (!email || !isValidEmail(email)) {
+                alert('Por favor, introduce un email válido');
+                return;
+            }
+            
+            // Simular envío
+            const recoveryBtn = document.querySelector('#forgot-password-modal .btn-primary');
+            const originalText = recoveryBtn.textContent;
+            recoveryBtn.textContent = 'Enviando...';
+            recoveryBtn.disabled = true;
+            
+            setTimeout(() => {
+                closeModal();
+                showNotification(`📧 Enlace de recuperación enviado a ${email} (simulado)`);
+                
+                // Restaurar botón
+                setTimeout(() => {
+                    recoveryBtn.textContent = originalText;
+                    recoveryBtn.disabled = false;
+                    document.getElementById('recovery-email').value = '';
+                }, 100);
+            }, 1500);
+        }
+        
+        // ============================================
+        // LOGOUT
+        // ============================================
+        function logout() {
+            closeModal();
+            
+            // Ocultar main app
+            document.getElementById('main-app').classList.remove('active');
+            
+            // Mostrar login screen
+            document.getElementById('login-screen').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('login-screen').classList.remove('hidden');
+            }, 50);
+            
+            // Limpiar formulario
+            document.getElementById('password').value = '';
+            
+            showNotification('Sesión cerrada exitosamente');
+        }
+        
+        function showLogoutModal() {
+            openModal('logout-modal');
+        }
+        
+        // ============================================
+        // NAVEGACIÓN Y FUNCIONALIDADES APP
+        // ============================================
         function switchScreen(screenId) {
-            // Hide all screens
+            // Ocultar todas las pantallas
             document.querySelectorAll('.screen').forEach(screen => {
                 screen.classList.remove('active');
             });
-
-            // Show selected screen
+            
+            // Mostrar pantalla seleccionada
             document.getElementById(screenId).classList.add('active');
-
-            // Update bottom nav active state
+            
+            // Actualizar estado de navegación inferior
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
-
-            // Set active nav item based on screen
+            
+            // Establecer elemento activo basado en pantalla
             const navMap = {
                 'home-screen': 0,
                 'discover-screen': 1,
@@ -1604,40 +2268,45 @@
                 'events-screen': 3,
                 'profile-screen': 4
             };
-
+            
             if (navMap[screenId] !== undefined) {
                 document.querySelectorAll('.nav-item')[navMap[screenId]].classList.add('active');
             }
         }
-
+        
         function switchEventTab(tabName) {
-            // Update tab active state
+            // Actualizar estado de pestañas
             document.querySelectorAll('.event-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             event.currentTarget.classList.add('active');
         }
-
+        
         function switchProfileTab(tabName) {
-            // Update tab active state
+            // Actualizar estado de pestañas
             document.querySelectorAll('.profile-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             event.currentTarget.classList.add('active');
         }
-
-        // Modal Functions
+        
+        // ============================================
+        // MODALES
+        // ============================================
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
         }
-
+        
         function closeModal() {
             document.querySelectorAll('.modal').forEach(modal => {
                 modal.classList.remove('active');
             });
         }
-
-        // Like Functionality
+        
+        // ============================================
+        // INTERACCIONES APP
+        // ============================================
+        // Likes
         document.querySelectorAll('.like-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const postId = this.getAttribute('data-post');
@@ -1657,42 +2326,147 @@
                 }
             });
         });
-
-        // Event Booking
+        
+        // Reservar evento
         function bookEvent() {
             closeModal();
             setTimeout(() => {
                 openModal('booking-modal');
             }, 300);
         }
-
-        // Create Post
+        
+        // Crear publicación
         function createPost() {
             closeModal();
-            alert('¡Publicación creada exitosamente!');
+            showNotification('¡Publicación creada exitosamente!');
             switchScreen('home-screen');
         }
-
-        // Create Event
+        
+        // Crear evento
         function createEvent() {
             closeModal();
-            alert('¡Evento creado exitosamente!');
+            showNotification('¡Evento creado exitosamente!');
             switchScreen('events-screen');
         }
-
-        // Close modals when clicking outside
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeModal();
+        
+        // ============================================
+        // SISTEMA DE NOTIFICACIONES
+        // ============================================
+        function showNotification(message) {
+            // Crear elemento de notificación
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: var(--primary);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+                z-index: 10000;
+                max-width: 300px;
+                transform: translateX(400px);
+                transition: transform 0.4s;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            `;
+            notification.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+            
+            document.body.appendChild(notification);
+            
+            // Animar entrada
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+            
+            // Remover después de 3 segundos
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 400);
+            }, 3000);
+        }
+        
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Añadir opción de logout al perfil
+            const profileActions = document.querySelector('.profile-actions');
+            if (profileActions) {
+                const logoutBtn = document.createElement('button');
+                logoutBtn.className = 'btn btn-outline';
+                logoutBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Cerrar sesión';
+                logoutBtn.onclick = showLogoutModal;
+                profileActions.appendChild(logoutBtn);
+            }
+            
+            // Establecer pantalla inicial
+            switchScreen('home-screen');
+            
+            // Soporte para tecla Enter en login
+            document.getElementById('password').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    login();
                 }
             });
-        });
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set default active screen
-            switchScreen('home-screen');
+            
+            // Cerrar modales al hacer clic fuera
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal();
+                    }
+                });
+            });
+            
+            // Mostrar mensaje de bienvenida inicial
+            setTimeout(() => {
+                const demoMessage = document.createElement('div');
+                demoMessage.style.cssText = `
+                    position: fixed;
+                    bottom: 100px;
+                    left: 20px;
+                    right: 20px;
+                    background: white;
+                    border-radius: 12px;
+                    padding: 15px;
+                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+                    z-index: 1000;
+                    text-align: center;
+                    font-size: 14px;
+                    border-left: 4px solid var(--primary);
+                `;
+                demoMessage.innerHTML = `
+                    <strong>👨‍💻 Demo Login</strong><br>
+                    Usa: <code>demo@localpal.com</code> / <code>demo123</code>
+                    <div style="margin-top: 8px; font-size: 12px; color: var(--gray);">
+                        También prueba: inversor@localpal.com / invertir2024
+                    </div>
+                `;
+                
+                document.getElementById('login-screen').appendChild(demoMessage);
+                
+                // Auto-eliminar después de 10 segundos
+                setTimeout(() => {
+                    if (demoMessage.parentNode) {
+                        demoMessage.style.opacity = '0';
+                        demoMessage.style.transform = 'translateY(20px)';
+                        demoMessage.style.transition = 'all 0.5s';
+                        setTimeout(() => {
+                            if (demoMessage.parentNode) {
+                                document.getElementById('login-screen').removeChild(demoMessage);
+                            }
+                        }, 500);
+                    }
+                }, 10000);
+            }, 1000);
         });
     </script>
 </body>
