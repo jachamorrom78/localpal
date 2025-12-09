@@ -2011,12 +2011,12 @@
                 name: "Demo User"
             },
             {
-                email: "inversor@localpal.com",
+                email: "inversor@localpal.es",
                 password: "invertir2024",
                 name: "Inversor"
             },
             {
-                email: "guia@localpal.com",
+                email: "guia@localpal.es",
                 password: "guia123",
                 name: "Guía Local"
             }
@@ -2117,9 +2117,9 @@
                 showNotification(`¡Bienvenido a LocalPal, ${userName}!`);
                 
                 // Si es usuario demo, mostrar mensaje especial
-                if (email === 'demo@localpal.com') {
+                if (email === 'demo@localpal.es') {
                     setTimeout(() => {
-                        showNotification('🔐 Usando credenciales demo. Prueba también: inversor@localpal.com / invertir2024');
+                        showNotification('🔐 Usando credenciales demo. Prueba también: inversor@localpal.es / invertir2024');
                     }, 2000);
                 }
             }, 500);
@@ -2181,10 +2181,10 @@
         // ============================================
         function showSignup() {
             alert('Para esta demo, usa las credenciales:\n\n' +
-                  '📧 demo@localpal.com\n🔐 demo123\n\n' +
+                  '📧 demo@localpal.es\n🔐 demo123\n\n' +
                   'O también puedes usar:\n' +
-                  '📧 inversor@localpal.com\n🔐 invertir2024\n\n' +
-                  '📧 guia@localpal.com\n🔐 guia123');
+                  '📧 inversor@localpal.es\n🔐 invertir2024\n\n' +
+                  '📧 guia@localpal.es\n🔐 guia123');
         }
         
         function showForgotPassword() {
@@ -2445,9 +2445,9 @@
                 `;
                 demoMessage.innerHTML = `
                     <strong>👨‍💻 Demo Login</strong><br>
-                    Usa: <code>demo@localpal.com</code> / <code>demo123</code>
+                    Usa: <code>demo@localpal.es</code> / <code>demo123</code>
                     <div style="margin-top: 8px; font-size: 12px; color: var(--gray);">
-                        También prueba: inversor@localpal.com / invertir2024
+                        También prueba: inversor@localpal.es / invertir2024
                     </div>
                 `;
                 
