@@ -2119,7 +2119,7 @@
                 // Si es usuario demo, mostrar mensaje especial
                 if (email === 'demo@localpal.es') {
                     setTimeout(() => {
-                        showNotification('🔐 Usando credenciales demo. Prueba también: inversor@localpal.es / invertir2024');
+                        showNotification('🔐 Usando credenciales demo. Prueba también: inversor@localpal.es / *****');
                     }, 2000);
                 }
             }, 500);
@@ -2166,7 +2166,7 @@
         function socialLogin(provider) {
             // Para la demo, usar credenciales demo
             document.getElementById('email').value = 'demo@localpal.es';
-            document.getElementById('password').value = 'demo123';
+            document.getElementById('password').value = '*****';
             
             showNotification(`Iniciando sesión con ${provider}...`);
             
